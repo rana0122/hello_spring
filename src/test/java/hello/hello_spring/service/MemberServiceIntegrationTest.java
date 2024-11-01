@@ -24,11 +24,11 @@ class MemberServiceIntegrationTest {
 
 
     @Test
-    @Commit
+//    @Commit
     void join() {
         //given
         Member member = new Member();
-        member.setName("test100");
+        member.setName("sookim");
         //when
         Long id = memberService.join(member);
         //then
@@ -39,10 +39,10 @@ class MemberServiceIntegrationTest {
     void ExceptionJoin(){
         //given
         Member member1 = new Member();
-        member1.setName("test");
+        member1.setName("sookim");
 
         Member member2 = new Member();
-        member2.setName("test");
+        member2.setName("sookim");
         //when : 이름이 중복된 회원이 가입하기 때문에 예외 발생 코드로 넘어감.
         // validateDuplicateMember(member);
         memberService.join(member1);
