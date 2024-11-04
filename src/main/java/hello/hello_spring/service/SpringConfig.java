@@ -11,8 +11,9 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-//   private DataSource dataSource;
-//   private EntityManager em;
+//   private DataSource dataSource; //jdbc, template
+//   private EntityManager em; //JPA
+    //spring Data JPA가 만들어놓은 구현체를 자동으로 injection 해줌.
     private final MemberRepository memberRepository;
 
     @Autowired
@@ -21,11 +22,11 @@ public class SpringConfig {
     }
 
 //    @Autowired
-//    public SpringConfig(DataSource dataSource) {
+//    public SpringConfig(DataSource dataSource) { //jdbc, template
 //        this.dataSource = dataSource;
 //    }
 //   @Autowired
-//    public SpringConfig(EntityManager em) {
+//    public SpringConfig(EntityManager em) { //JPA
 //        this.em = em;
 //    }
 
@@ -38,9 +39,9 @@ public class SpringConfig {
 //    @Bean
 //    public MemberRepository  memberRepository(){ //MemberRepository는 interface이므로 구현체를 반환한다.
 //        return  new MemoryMemberRespository();
-//        return  new JdbcMemberRepository(dataSource);
-//        return new JdbcTemplateMemberRepository(dataSource);
-//        return new JpaMemberRepository(em);
+//        return  new JdbcMemberRepository(dataSource); //JDBC
+//        return new JdbcTemplateMemberRepository(dataSource);  //JBDCTemplate
+//        return new JpaMemberRepository(em); //JPA
 //
 //
 //    }

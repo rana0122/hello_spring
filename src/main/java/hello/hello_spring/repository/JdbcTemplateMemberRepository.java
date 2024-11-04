@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class JdbcTemplateMemberRepository implements MemberRepository {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
 
     public JdbcTemplateMemberRepository(DataSource dataSource) {
@@ -49,12 +49,21 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
     }
 
     private RowMapper<Member> memberRowMapper(){
-        return (rs, rowNum) -> {
-
-            Member member = new Member();
-            member.setId(rs.getLong("id"));
-            member.setName(rs.getString("name"));
-            return member;
+        return  new RowMapper<Member>() {
+            @Override
+            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                return member;
+            }
         };
+//        return (rs, rowNum) -> {  //alt+enter :람다로 바꾸기
+//
+//            Member member = new Member();
+//            member.setId(rs.getLong("id"));
+//            member.setName(rs.getString("name"));
+//            return member;
+//        };
     }
 }
