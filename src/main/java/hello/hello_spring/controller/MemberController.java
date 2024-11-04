@@ -15,5 +15,6 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("MemberService : "+ memberService.getClass()); //proxy호출 되는 부분 확인 가능함.
     }
 }
